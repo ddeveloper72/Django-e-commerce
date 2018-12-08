@@ -19,16 +19,17 @@ def add_to_cart(request, id):
     return redirect(reverse('index'))
 
 
-def adjust_cart(reqeust, id):
+def adjust_cart(request, id):
     """Adjust the quantituy of a specified product in the cart"""
 
-    quantity = int(reqeust.POST.get('quantity'))
-    cart = reqeust.session.get('cart', {})
+    quantity = int(request.POST.get('quantity'))
+    cart = request.session.get('cart', {})
 
+# we can only adjust a quantity if there is already something in the cart.
     if quantity > 0:
         cart[id] = quantity
     else:
         cart.pop[id]
 
-    reqeust.session['cart'] = cart
-    return redirect(reqeust('viewe_cart'))
+    request.session['cart'] = cart
+    return redirect(request('view_cart'))
