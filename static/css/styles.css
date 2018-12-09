@@ -14,7 +14,7 @@ footer {
 }
 
 .icon-bar {
-    background-color: #fff;
+    background-color: rgb(22, 125, 185);
 }
 
 .accountform {
@@ -65,4 +65,12 @@ caption p {
 
 .product-description {
     min-height: 40px;
+}
+
+.fa-shopping-cart:before {
+    font-size: 15px;
+}
+
+.glyphicon-eur:before {
+    font-size: 10px;
 }
