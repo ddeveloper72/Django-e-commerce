@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ecommerce</title>
 
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     
@@ -14,13 +15,13 @@
     <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     
 
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
 
 </head>
@@ -47,9 +48,9 @@
                         {% endif %}
                         <li>
                             <a href="{% url 'view_cart' %}">
-                                <i class="fas fa-shopping-cart"></i> Cart
+                                <i class="fas fa-shopping-cart"> Cart</i>
                                 {% if product_count > 0 %}
-                                <label class="badge badge-warning">{{ product_count }}</label>
+                                <span class="badge badge-warning">{{ product_count }}</span>
                                 {% endif %}
                             </a>
                         </li>
@@ -69,7 +70,7 @@
     <div class="display">
         <form action="{% url 'search' %}" method="get">
             <input type="text" name="q">
-            <button type="submit">Submit</button>
+            <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
         </form>
     </div>
     {% block content %}
