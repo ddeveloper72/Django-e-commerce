@@ -12,14 +12,15 @@
            <p class="product-description">{{ product.description }}</p>
            <p><span class="glyphicon glyphicon-eur" aria-hidden="true"> {{ product.price }}</span></p>
 
-           <form method="post" action="{% url 'add_to_cart' product.id %}"></form>
-           {% csrf_token %}
-           <div class="input-group">
-               <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-            <span class="input-group-btn">
-                <button class="btn btn-success" type="submit">Add</button>
-            </span>
-           </div>
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity" required>
+                 <span class="input-group-btn">
+                     <button class="btn btn-success" type="submit">Add</button>
+                 </span>
+                </div>
+            </form>
        </div> 
     </div>
     {% endfor %}
