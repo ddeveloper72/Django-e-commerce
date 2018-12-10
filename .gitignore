@@ -4,4 +4,5 @@
 *.code-workspace
 *.pyc
 .~c9
-__pycache__/
+__pycache__/env.py 
+env.py
