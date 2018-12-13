@@ -40,10 +40,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
+                  
                   <a class="navbar-brand" href="/">Ecommerce</a>
+                    <ul class="navbar-brand nav navbar-nav">
+                        {% if messages %}
+                            <li>
+                                {% for message in messages %}
+                                {{ message }}
+                                {% endfor %}
+                            </li>
+                        {% endif %}
+                    </ul>
             </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                        
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'logout'  %}">Logout</a></li>
                             <li><a href="{% url 'profile' %}">Profile</a></li>        
@@ -64,13 +75,13 @@
             </div> 
         </div>   
     </nav>
-{% if messages %}
+<!-- {% if messages %}
 <div>
     {% for message in messages %}
     {{ message }}
     {% endfor %}
 </div>
-{% endif %}
+{% endif %} -->
 <div class="container">
     <div class="display">
         <form action="{% url 'search' %}" method="get">
