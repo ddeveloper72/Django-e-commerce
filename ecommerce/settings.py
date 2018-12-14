@@ -34,7 +34,7 @@ DEBUG = development
 
 
 ALLOWED_HOSTS = [
-    os.environ.get('ddeveloper72-ecommerce'),
+    os.environ.get('ddeveloper72-ecommerce.herokuapp.com'),
     os.environ.get('C9_HOSTNAME'),
     os.environ.get('localhost', '127.0.0.1')
 ]
