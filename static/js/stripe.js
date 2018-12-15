@@ -1,6 +1,6 @@
 $(function(){
     $("#payment-form").submit(function(){
-        var from = this;
+        var form = this;
         var card = {
             number: $("#id_credit_card_number").val(),
             expMonth: $("#id_expiry_month").val(),
@@ -20,7 +20,7 @@ $(function(){
             $("#id_cvv").removeAttr('name');
 
             form.submit();
-            console.log(response.id)
+            
         } else {
             $("#stripe-error-message").text(response.error.message);
             $("#credit-card-errors").show();
