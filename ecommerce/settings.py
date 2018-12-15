@@ -16,7 +16,7 @@ import os
 
 import dj_database_url
 
-if os.environ.get('DEVELOPMENT', 'True'):
+if os.environ.get('DEVELOPMENT'):
     development = True
 else:
     development = False
