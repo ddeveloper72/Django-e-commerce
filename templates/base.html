@@ -42,7 +42,7 @@
                   </button>
                   
                   <a class="navbar-brand" href="/">Ecommerce</a>
-                    <ul class="fash-message nav navbar-nav">
+                    <!-- <ul class="fash-message nav navbar-nav">
                         {% if messages %}
                             <li>
                                 {% for message in messages %}
@@ -50,7 +50,7 @@
                                 {% endfor %}
                             </li>
                         {% endif %}
-                    </ul>
+                    </ul> -->
             </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -75,13 +75,15 @@
             </div> 
         </div>   
     </nav>
-<!-- {% if messages %}
-<div>
-    {% for message in messages %}
-    {{ message }}
-    {% endfor %}
-</div>
-{% endif %} -->
+    {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 <div class="container">
     <div class="display">
         <form action="{% url 'search' %}" method="get">

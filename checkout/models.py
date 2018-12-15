@@ -16,7 +16,7 @@ class Order(models.Model):
 
     def __self__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
-# Rerurning a string which is a sumamry of the order
+# Returning a string which is a summary of the order
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)

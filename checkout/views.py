@@ -26,19 +26,20 @@ def checkout(request):
             cart = request.session.get('cart', {})
             # initialize a value of 0
             total = 0
-            for id, quantity in cart.itmes():
+            for id, quantity in cart.items():
                 product = get_object_or_404(Product, pk=id)
                 total += quantity * product.price
                 order_line_item = OrderLineItem(
-                    order = order,
-                    quantity = quantity  
+                    product = product,
+                    quantity = quantity, 
+                    order = order
                     )
                 order_line_item.save()
 
             try: 
                 customer = stripe.Charge.create(
                     ammount = int(total * 100),
-                    currency = "EURO",
+                    currency = "EUR",
                     description = request.user.email,
                     card = payment_form.cleaned_data['stripe_id'],
                 )
@@ -48,7 +49,7 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(request, "youh habe paid successfully")
+                messages.error(request, "your payment was successful")
                 request.session['cart'] = {}
                 # Empties the cart from the session after payment
                 return redirect(reverse('products'))

@@ -11,13 +11,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-# import env
+
+import env
+
 import dj_database_url
 
-if os.environ.get('DEVELOPMENT'):
+""" if os.environ.get('DEVELOPMENT'):
     development = True
 else:
-    development = False
+    development = False """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,11 +32,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = True
 
 
 ALLOWED_HOSTS = [
-    os.environ.get('ddeveloper72-ecommerce.herokuapp.com'),
+    'ddeveloper72-ecommerce.herokuapp.com',
     os.environ.get('C9_HOSTNAME'),
     os.environ.get('localhost', '127.0.0.1')
 ]
@@ -92,15 +94,17 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if development:
-    DATABASES = {
+if "DATABSE_URL" in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))        
+    }
+else:
+    print("Database URL not found. Using SQLite instead")
+    DATABASES =  {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 

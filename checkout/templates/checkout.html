@@ -7,13 +7,13 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <!-- setting the Stripe publishable key -->
-<script type="text/javascript" scr="">
+<script type="text/javascript">
     //<![CDATA[
     Stripe.publishableKey = '{{ publishable }}';
-    //]]
+    //]]>
 </script>
 
-<script src="text/javascript" scr="{% static 'js/stripe.js' %}"></script>
+<script type="text/javascript" scr="{% static 'js/stripe.js' %}"></script>
 
 {% endblock head_js %}
 
@@ -28,7 +28,7 @@
        <div class="caption">
            <h3>{{ item.product.name }}</h3>
            <p class="product-description">{{ item.product.description }}</p>
-           <p>{{ item.quantity}}</p>
+           <p>Quantity: {{ item.quantity }}</p>
            <p class="glyphicon glyphicon-eur"> {{ item.product.price }}</p>
         </div>
    </div>
@@ -39,7 +39,7 @@
     <p><span class="glyphicon glyphicon-eur" aria-hidden="true"></span> {{ total }}</p>    
 </div>
 
-<form method="post" roll="form" id="payment-form" action="{% url 'checkout' %}">
+<form method="post" role="form" id="payment-form" action="{% url 'checkout' %}">
     <legend>Payment Details</legend>
     <div id="credit-card-errors" stye="display:none">
         <div class="alert-message block-message error" id="stripe-error-message"></div>
