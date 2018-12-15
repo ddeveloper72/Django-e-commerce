@@ -149,20 +149,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+    os.path.join(BASE_DIR, "static"),
+    )
 
 
-MEDIA_ROOT = (os.path.join(BASE_DIR, "media"))
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, "media")
+    )
 
 MEDIA_URL = '/media/' 
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-
 
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
