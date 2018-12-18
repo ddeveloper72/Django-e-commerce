@@ -14,8 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from accounts.views import index
 from accounts import urls as urls_accounts
@@ -39,5 +37,4 @@ urlpatterns = [
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
-    url(r'^static/(?P<path>.*)$', static.serve,{'document_root': STATIC_ROOT}),
     ]
