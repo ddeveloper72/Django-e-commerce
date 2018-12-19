@@ -16,6 +16,7 @@ import os
 
 import dj_database_url
 
+# Switch Debug between True and False
 if os.environ.get('DEVELOPMENT'):
     development = True
 else:
@@ -107,7 +108,11 @@ if development:
     }
 else:
     print("Development environ not detected. Using remote DATABASE_URL")
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) } 
+    
+    
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
