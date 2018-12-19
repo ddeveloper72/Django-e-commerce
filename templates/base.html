@@ -37,25 +37,16 @@
                   </button>
                   
                   <a class="navbar-brand" href="/">Ecommerce</a>
-                    <!-- <ul class="fash-message nav navbar-nav">
-                        {% if messages %}
-                            <li>
-                                {% for message in messages %}
-                                {{ message }}
-                                {% endfor %}
-                            </li>
-                        {% endif %}
-                    </ul> -->
             </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         
                         {% if user.is_authenticated %}
-                            <li><a href="{% url 'logout'  %}">Logout</a></li>
-                            <li><a href="{% url 'profile' %}">Profile</a></li>        
+                            <li><a href="{% url 'logout'  %}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+                            <li><a href="{% url 'profile' %}"><i class="fas fa-user"></i>Profile</a></li>        
                         {% else %}        
-                            <li><a href="{% url 'login' %}">Login</a></li>
-                            <li><a href="{% url 'registration' %}">Register</a></li>
+                            <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+                            <li><a href="{% url 'registration' %}"><i class="fas fa-user-plus"></i>Register</a></li>
                         {% endif %}
                         <li>
                             <a href="{% url 'view_cart' %}">
@@ -92,7 +83,7 @@
 </div>
 <footer>
     <div class="container">
-        <p>Made by Coode Institute bootcamper, Duncan Falconer</p>
+        <p>Made by Code Institute bootcamper, Duncan Falconer</p>
     </div> 
 </footer>
 </body>
