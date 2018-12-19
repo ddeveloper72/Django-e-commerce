@@ -79,7 +79,7 @@ caption p {
     min-height: 40px;
 }
 
-.fa-shopping-cart:before {
+.fa :before {
     font-size: 15px;
 }
 
