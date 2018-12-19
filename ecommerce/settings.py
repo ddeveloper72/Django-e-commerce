@@ -178,7 +178,8 @@ MEDIA_ROOT = (
     os.path.join(BASE_DIR, "media")
     )
 
-MEDIA_URL = '/media/' 
+# AWS custom domain and , media files location, gets injected here
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 
 STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE')
