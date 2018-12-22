@@ -164,7 +164,7 @@ Stripe is fantastic background service that processes all the financial services
 
 ## 6. Useful development tips and lessons learned
 
-   * From the start of this tutorial, I used Travis automated testing. It's great till one runs in to anything but a green badge and the one starts to wonder who is looking at my build failing.  I'm proud to say, I had loads of failed builds.  Travis is very useful as a debug tool as well because even though I had a perfectly good working product live and online, I still had environmental variable selection issues with my development database selection switch.  
+   * From the start of this tutorial, I used Travis automated testing. It's great till one runs in to anything but a green badge and then one starts to wonder who is looking at my build failing.  I'm proud to say, I had loads of failed builds.  Travis is very useful as a debug tool as well because even though I had a perfectly good working product live and online, I still had environmental variable selection issues with my development database selection switch.  
 
    * I spent at least 40% of my time debugging the applications as they were written.  The majority of my problems came from spelling errors when taking down notes from the tutorial. Other errors came from automation in VSCode where I use closing automatic closing brackets created, for example,
   `<form method="post" action="{% url 'add_to_cart' product.id %}"></form>`  some code here, and then, `<button class="btn btn-success" type="submit">Add</button>`  
@@ -174,8 +174,8 @@ Stripe is fantastic background service that processes all the financial services
 
   * Trying to debug payment declined errors when using stripe, was one of the silliest errors I had made.  I found the error in my checkout models, where I had written def `__self__(self):` instead of `__str__(self):`, so I was never returning the string for my orders and so I kept getting a required field was missing error.  The error took me the longest to discover, because I immediately went to debug what was new and different in this project, which was the stipe JavaScript. I never thought to think that in all the models that I had written, one was incorrect.  I found it by doing a like for like comparison with my other models then realized my error.
 
-   * This is a learning mistake that took a few minutes to discover after running numerous test, adding
-   mew users to my User model and then consulting with colleagues on [#Slack](https://slack.com/) for ideas.  The value gained from understanding the error is enormous.
+* Another error that I discovered was when I wanted to add new products to my production database from the live website. I kept getting an authentication error, then realised that I hadn't added my Amazon AWS keys to my config vars.  That problem was the very quickly resolved.
+
 
 ## 7. Setting up the environmental variables for use with VSCode
 
