@@ -28,6 +28,7 @@ from .settings import MEDIA_ROOT
 
 
 urlpatterns = [
+    url(r'^favicon.ico/', static.serve,('favicon/favicon.ico'), name="favicon"),
     url(r'^admin/', admin.site.urls),
     url(r'^$', all_products, name='index'),
     url(r'^accounts/', include(urls_accounts)),  
