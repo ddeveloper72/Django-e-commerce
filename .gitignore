@@ -1,5 +1,5 @@
 *.sqlite3
-.venv
+env
 .vscode
 *.code-workspace
 *.pyc
@@ -8,4 +8,4 @@ __pycache__/env.py
 env.py
 *.png
 media/
-
+ecommerce/__pycache__/urls.cpython-36.pyc
