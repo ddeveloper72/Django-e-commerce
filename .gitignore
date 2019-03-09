@@ -8,4 +8,4 @@ __pycache__/env.py
 env.py
 *.png
 media/
-ecommerce/__pycache__/urls.cpython-36.pyc
+*.cpython-36.pyc
