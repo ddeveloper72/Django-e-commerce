@@ -9,3 +9,4 @@ env.py
 *.png
 media/
 *.cpython-36.pyc
+ecommerce/__pycache__/urls.cpython-36.pyc
