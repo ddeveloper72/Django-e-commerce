@@ -5,9 +5,8 @@ env
 *.code-workspace
 *.pyc
 .~c9
-__pycache__/env.py 
+/__pycache__
 env.py
 *.png
 media/
 *.cpython-36.pyc
-ecommerce/__pycache__/urls.cpython-36.pyc
