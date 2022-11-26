@@ -14,6 +14,11 @@ import os
 
 import environ
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+
+
 import dj_database_url
 
 # Switch Debug between True and False
