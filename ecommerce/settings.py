@@ -22,7 +22,7 @@ environ.Env.read_env()
 import dj_database_url
 
 # Switch Debug between True and False
-if os.environ.get('DEVELOPMENT'):
+if environ.Env():
     development = True
 else:
     development = False
@@ -37,7 +37,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
@@ -45,8 +45,8 @@ DEBUG = development
 
 ALLOWED_HOSTS = [
     'ddeveloper72-ecommerce.herokuapp.com',
-    os.environ.get('C9_HOSTNAME'),
-    os.environ.get('localhost', '127.0.0.1')
+    'localhost', 
+    '127.0.0.1'
 ]
 
 
@@ -103,8 +103,8 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) } 
+if "DATABASE_URL" in env:
+    DATABASES = {'default': dj_database_url.parse(env('DATABASE_URL')) } 
 else:
     print("Database URL not found. Using SQLite instead")
     DATABASES =  {
@@ -162,8 +162,8 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 AWS_STORAGE_BUCKET_NAME = 'duncan-ecommerce'
 AWS_S3_REGION_NAME = 'eu-west-1'
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
 
 # AWS bucket name, 'duncan-ecommerce', gets injected here
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -187,8 +187,8 @@ MEDIA_ROOT = (
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 
-STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE')
-STRIPE_SECRET = os.environ.get('STRIPE_SECRET')
+STRIPE_PUBLISHABLE = env('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = env('STRIPE_SECRET')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
@@ -196,6 +196,6 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+EMAIL_HOST_USER = env("EMAIL_ADDRESS")
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
 EMAIL_PORT = 587
