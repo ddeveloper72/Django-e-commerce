@@ -1,6 +1,7 @@
 *.sqlite3
 env
 .env
+.venv
 .vscode
 *.code-workspace
 *.pyc
