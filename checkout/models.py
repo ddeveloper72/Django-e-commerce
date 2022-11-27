@@ -18,12 +18,15 @@ class Order(models.Model):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
 # Returning a string which is a summary of the order
 
+
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, null=False)
-    product = models.ForeignKey(Product, null=False)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE,
+                              null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                null=False)
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(self.quantity, self.product.name, self.product.price)
+        return "{0} {1} @ {2}".format(self.quantity, self.product.name, 
+                                      self.product.price)
 # Return a string of the individual order line
-
