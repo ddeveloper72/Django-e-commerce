@@ -13,28 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index
-from accounts import urls as urls_accounts
-from products import urls as urls_products
-from cart import urls as urls_cart
-from search import urls as urls_search
-from checkout import urls as urls_checkout
+from django.urls import include, path, re_path
+from django.contrib import admin
+from django.views.static import serve
+from django.conf import settings
 from products.views import all_products
-from django.views import static
+from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 from .settings import MEDIA_ROOT
 
-
+favicon_view = RedirectView.as_view(url='favicon/favicon.ico', permanent=True)
 
 urlpatterns = [
-    url(r'^favicon.ico/', static.serve,('favicon/favicon.ico'), name="favicon"),
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', all_products, name='index'),
-    url(r'^accounts/', include(urls_accounts)),  
-    url(r'^products/', include(urls_products)),
-    url(r'^cart/', include(urls_cart)),
-    url(r'^checkout/', include(urls_checkout)),
-    url(r'^search/', include(urls_search)),
-    url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
-    ]
+    path('favicon.ico/', favicon_view, name="favicon"),
+    path('admin/', admin.site.urls),
+    path('', all_products, name='index'),
+    path('accounts/', include('accounts.urls')),
+    path('products/', include('products.urls')),
+    path('cart/', include('cart.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('search/', include('search.urls')),
+    re_path('media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
