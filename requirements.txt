@@ -3,6 +3,7 @@ colorama==0.4.6
 dill==0.3.6
 distlib==0.3.6
 filelock==3.8.0
+gunicorn==20.1.0
 isort==5.10.1
 lazy-object-proxy==1.8.0
 mccabe==0.7.0
